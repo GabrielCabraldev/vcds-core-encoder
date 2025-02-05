@@ -1,6 +1,58 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
+
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Nome é obrigatório"),
+  email: z.string().email("Email inválido"),
+  message: z.string().min(1, "Mensagem é obrigatória"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export const Contact = () => {
+  const { toast } = useToast();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      await emailjs.send(
+        "service_vcdscore", // Substitua pelo seu Service ID do EmailJS
+        "template_vcdscore", // Substitua pelo seu Template ID do EmailJS
+        {
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+          to_email: "vcdscore@gmail.com",
+        },
+        "YOUR_PUBLIC_KEY" // Substitua pela sua Public Key do EmailJS
+      );
+
+      toast({
+        title: "Mensagem enviada!",
+        description: "Entraremos em contato em breve.",
+      });
+
+      reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente mais tarde.",
+      });
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -31,33 +83,50 @@ export const Contact = () => {
               </div>
             </div>
           </div>
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <input
                 type="text"
                 placeholder="Nome"
+                {...register("name")}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
+              {errors.name && (
+                <span className="text-red-500 text-sm">{errors.name.message}</span>
+              )}
             </div>
             <div>
               <input
                 type="email"
                 placeholder="E-mail"
+                {...register("email")}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
             <div>
               <textarea
                 placeholder="Mensagem"
                 rows={4}
+                {...register("message")}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               ></textarea>
+              {errors.message && (
+                <span className="text-red-500 text-sm">
+                  {errors.message.message}
+                </span>
+              )}
             </div>
             <button
               type="submit"
-              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition-all"
+              disabled={isSubmitting}
+              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Enviar Mensagem
+              {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
             </button>
           </form>
         </div>
