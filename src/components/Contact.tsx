@@ -27,15 +27,15 @@ export const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     try {
       await emailjs.send(
-        "service_vcdscore", // Substitua pelo seu Service ID do EmailJS
-        "template_vcdscore", // Substitua pelo seu Template ID do EmailJS
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: data.name,
           from_email: data.email,
           message: data.message,
           to_email: "vcdscore@gmail.com",
         },
-        "YOUR_PUBLIC_KEY" // Substitua pela sua Public Key do EmailJS
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       toast({
@@ -45,6 +45,7 @@ export const Contact = () => {
 
       reset();
     } catch (error) {
+      console.error("Erro ao enviar email:", error);
       toast({
         variant: "destructive",
         title: "Erro ao enviar mensagem",
