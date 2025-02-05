@@ -13,21 +13,21 @@ export const Contact = () => {
               <Phone className="w-6 h-6 text-primary mr-4" />
               <div>
                 <h3 className="font-semibold text-lg">Telefone</h3>
-                <p className="text-gray-600">(11) 99999-9999</p>
+                <p className="text-gray-600">(11) 97411-8938</p>
               </div>
             </div>
             <div className="flex items-center">
               <Mail className="w-6 h-6 text-primary mr-4" />
               <div>
                 <h3 className="font-semibold text-lg">E-mail</h3>
-                <p className="text-gray-600">contato@vcdscore.com.br</p>
+                <p className="text-gray-600">vcdscore@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center">
               <MapPin className="w-6 h-6 text-primary mr-4" />
               <div>
                 <h3 className="font-semibold text-lg">Endereço</h3>
-                <p className="text-gray-600">São Paulo, SP</p>
+                <p className="text-gray-600">Cotia, SP</p>
               </div>
             </div>
           </div>

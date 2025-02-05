@@ -67,17 +67,6 @@ const featureCategories = [
       "Ativar travamento automático ao passar de 20 km/h",
       "Ativar destravamento automático ao remover a chave"
     ]
-  },
-  {
-    icon: <Settings className="w-8 h-8 mb-4 text-primary" />,
-    title: "Ajustes Avançados",
-    features: [
-      "Codificação de novos módulos",
-      "Atualização de software da ECU",
-      "Ajuste fino na injeção",
-      "Desativação de sensores desnecessários",
-      "Modificação do modo de funcionamento do câmbio DSG"
-    ]
   }
 ];
 
