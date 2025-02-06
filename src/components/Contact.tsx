@@ -32,7 +32,7 @@ export const Contact = () => {
     try {
       await emailjs.send(
         "service_lkf7f91",
-        "template_xag1q5m",
+        "template_hhaxfve",
         {
           from_name: data.name,
           from_email: data.email,
