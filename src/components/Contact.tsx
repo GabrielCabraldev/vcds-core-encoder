@@ -1,3 +1,4 @@
+
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,15 +28,15 @@ export const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     try {
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        "service_lkf7f91",
+        "template_xag1q5m",
         {
           from_name: data.name,
           from_email: data.email,
           message: data.message,
           to_email: "vcdscore@gmail.com",
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        "N5r2pOzwjQDvQD8ns"
       );
 
       toast({
