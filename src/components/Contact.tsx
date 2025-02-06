@@ -6,7 +6,6 @@ import { z } from "zod";
 import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
 
-// Initialize EmailJS
 emailjs.init("N5r2pOzwjQDvQD8ns");
 
 const contactFormSchema = z.object({
@@ -17,6 +16,10 @@ const contactFormSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
+const defaultMessage = `Olá! Gostaria de agendar uma codificação VCDS para meu veículo. 
+Por favor, me informe sobre disponibilidade e valores.
+Preços a partir de R$ 150,00.`;
+
 export const Contact = () => {
   const { toast } = useToast();
   const {
@@ -26,6 +29,9 @@ export const Contact = () => {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      message: defaultMessage
+    }
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -86,6 +92,9 @@ export const Contact = () => {
                 <h3 className="font-semibold text-lg">Endereço</h3>
                 <p className="text-gray-600">Cotia, SP</p>
               </div>
+            </div>
+            <div className="mt-6 p-4 bg-white rounded-lg shadow">
+              <p className="text-primary font-semibold">Preços a partir de R$ 150,00</p>
             </div>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

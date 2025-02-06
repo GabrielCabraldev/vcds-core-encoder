@@ -1,71 +1,60 @@
+
 import { Car, Lightbulb, Gauge, Monitor, Lamp, Layout, Radio, Settings } from "lucide-react";
 
 const featureCategories = [
   {
-    icon: <Lightbulb className="w-8 h-8 mb-4 text-primary" />,
-    title: "Funções de Conforto e Iluminação",
+    icon: <Car className="w-8 h-8 mb-4 text-primary" />,
+    title: "Melhorias de Desempenho",
     features: [
-      "Luz de neblina como DRL (rodagem diurna)",
-      "Travamento e destravamento sonoro (bip ao travar/destravar)",
-      "Fechamento automático dos vidros ao travar",
-      "Ativação do 'Comfort Blinker' (pisca 3 vezes com um toque)",
-      "Desbloqueio do controle remoto para todos os vidros",
-      "Ativar 'Coming Home' e 'Leaving Home'",
-      "Desativação do aviso sonoro do cinto de segurança",
-      "Desbloqueio do retrovisor rebatível automaticamente"
+      "Hill Hold Control (HHC) - Saída suave em ladeiras (TSI)",
+      "Minimização do puxar para direita ao arrancar (TSI)",
+      "Guardar memória do aquecimento do banco",
+      "Habilitar botão controle de tração ASR (TSI)",
+      "Ajuste na resposta do acelerador"
     ]
   },
   {
-    icon: <Gauge className="w-8 h-8 mb-4 text-primary" />,
-    title: "Desempenho e Motor",
+    icon: <Lightbulb className="w-8 h-8 mb-4 text-primary" />,
+    title: "Iluminação e DRL",
     features: [
-      "Desativação do sistema Start-Stop",
-      "Ativação do indicador de marcha no painel",
-      "Mudança no tempo de resposta do acelerador",
-      "Modo 'escapamento esportivo'",
-      "Ajuste da sensibilidade do ESP"
+      "Habilitar DRL dos faróis LED",
+      "Coming Home e Leaving Home",
+      "Luz DRL forte na posição da lanterna",
+      "Ativação automática do farol a 140km/h",
+      "DRL ativo com seta no MK6 pacote premium"
+    ]
+  },
+  {
+    icon: <Settings className="w-8 h-8 mb-4 text-primary" />,
+    title: "Conforto e Conveniência",
+    features: [
+      "Rebatimento dos retrovisores na chave",
+      "Fechamento dos vidros pelo sensor de chuva",
+      "Abertura do teto solar na chave",
+      "Espelhos em Tilt Down (TSI e CL)",
+      "Trancar o carro ligado (sistema kessy)"
     ]
   },
   {
     icon: <Monitor className="w-8 h-8 mb-4 text-primary" />,
-    title: "Sistema de Multimídia e Câmeras",
+    title: "Display e Indicadores",
     features: [
-      "Desbloqueio do vídeo em movimento",
-      "Ativar a câmera de ré",
-      "Ativar a exibição de sensor de estacionamento gráfico",
-      "Ativar a função de espelhamento de mídia"
-    ]
-  },
-  {
-    icon: <Lamp className="w-8 h-8 mb-4 text-primary" />,
-    title: "Iluminação Externa e Interna",
-    features: [
-      "Ativar os piscas traseiros como luz de freio adicional",
-      "Ajuste do brilho da iluminação diurna (DRL)",
-      "Habilitar DRL nas lanternas traseiras",
-      "Piscas dinâmicos",
-      "Personalização do tempo das setas de alerta"
-    ]
-  },
-  {
-    icon: <Layout className="w-8 h-8 mb-4 text-primary" />,
-    title: "Painel e Indicadores",
-    features: [
-      "Ativar a temperatura do óleo no painel",
+      "Indicator Celebration - Varredura dos ponteiros",
+      "Pressão de pneus pelo sensor ABS (TSI)",
       "Mostrar velocidade digital no painel",
-      "Ativar 'Lap Timer'",
-      "Mostrar o consumo instantâneo",
-      "Ativar o indicador de troca de marcha"
+      "Câmera de ré OEM no rádio original",
+      "Personalização dos avisos do painel"
     ]
   },
   {
     icon: <Radio className="w-8 h-8 mb-4 text-primary" />,
-    title: "Funções do Controle Remoto",
+    title: "Personalização de Alertas",
     features: [
-      "Abrir e fechar os vidros pelo controle remoto",
-      "Desbloquear o porta-malas ao destravar",
-      "Ativar travamento automático ao passar de 20 km/h",
-      "Ativar destravamento automático ao remover a chave"
+      "Personalização do bip do alarme",
+      "Seta conforto de 3 até 5 piscas",
+      "Desativação do aviso sonoro do cinto",
+      "Pisca de alerta por frenagem de emergência",
+      "Configuração dos avisos de revisão"
     ]
   }
 ];
