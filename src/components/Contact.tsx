@@ -6,6 +6,9 @@ import { z } from "zod";
 import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
 
+// Initialize EmailJS
+emailjs.init("N5r2pOzwjQDvQD8ns");
+
 const contactFormSchema = z.object({
   name: z.string().min(1, "Nome é obrigatório"),
   email: z.string().email("Email inválido"),
